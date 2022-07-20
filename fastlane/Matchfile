@@ -1,4 +1,4 @@
-git_url("git@github.com:Caliope-Victor/Certificates.git")
+git_url("https://github.com/Caliope-Victor/Certificates.git")
 
 storage_mode("git")
 
