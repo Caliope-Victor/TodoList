@@ -26,6 +26,9 @@ class PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
     
+    /// create an activity to core data
+    /// - Parameter name: name of activity
+    /// - Returns: an activity that was created
     func createActivity(name: String) -> Activity {
         let activity = Activity(context: container.viewContext)
         activity.timestamp = Date()
@@ -34,6 +37,12 @@ class PersistenceController {
         return activity
     }
     
+    /// update an activity
+    /// - Parameters:
+    ///   - activity: An activity to be updated
+    ///   - name: new name to the actvity
+    ///   - timeStamp: new timeStamp
+    /// - Returns: the updated activity
     func updateActivity(activity: Activity, name: String, timeStamp: Date? = nil) -> Activity {
         if let timeStamp = timeStamp {
             activity.timestamp = timeStamp
@@ -43,6 +52,7 @@ class PersistenceController {
         return activity
     }
     
+    /// save the context
     func save() {
         do {
             try container.viewContext.save()
