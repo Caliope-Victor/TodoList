@@ -1,0 +1,19 @@
+name: Integration Tests
+ 
+on:
+  pull_request:
+    branches: [ develop ]
+ 
+jobs:
+  build:
+ 
+    runs-on: macos-latest
+ 
+    steps:
+    - uses: actions/checkout@v2
+     
+    - name: Select Xcode
+      run: sudo xcode-select -switch /Applications/Xcode_13.2.1.app
+     
+    - name: Build and Test
+      run: xcodebuild test -project TodoList.xcodeproj -scheme "TodoList" -destination 'platform=iOS Simulator,name=iPhone 12,OS=15.2'
